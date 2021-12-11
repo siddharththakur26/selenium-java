@@ -1,12 +1,7 @@
 package tests;
 
 import common.BaseCase;
-import core.BasePageObject;
 import core.Constants;
-
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Assert.*;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 

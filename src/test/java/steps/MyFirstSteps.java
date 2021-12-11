@@ -1,10 +1,6 @@
 package steps;
 
-import org.openqa.selenium.By;
 
-import core.BasePageObject;
-import core.Constants;
-import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import pages.YourFirstPage;
