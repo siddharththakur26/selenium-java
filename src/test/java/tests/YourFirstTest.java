@@ -3,9 +3,14 @@ package tests;
 import common.BaseCase;
 import core.BasePageObject;
 import core.Constants;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Assert.*;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 
+import com.ibm.icu.impl.Assert;
 
 import steps.MyFirstSteps;
 
@@ -19,8 +24,12 @@ public class YourFirstTest extends BaseCase {
     {
         /*Write your test method here*/
     	driver.get(Constants.DEFAULT_URL);
-    	myFirstStepsObj.verifyDepartureField();
-    	myFirstStepsObj.verifyReturnField();
+    	if(!myFirstStepsObj.verifyDepartureField().equals(""))
+    		Assert.fail(myFirstStepsObj.verifyDepartureField());
+    	
+    	if(!myFirstStepsObj.verifyReturnField().equals(""))
+    		Assert.fail(myFirstStepsObj.verifyReturnField());
+    	
     	
     }
     
@@ -30,7 +39,11 @@ public class YourFirstTest extends BaseCase {
     	driver.get(Constants.DEFAULT_URL);
     	myFirstStepsObj.verifyDropDownValuesEntered("July","December (two years from now)");
     	myFirstStepsObj.clickonSearch();
-    	myFirstStepsObj.seatAvailableMessageIsDisplayed();    	
+ 
+    	if(!myFirstStepsObj.seatAvailableMessageIsDisplayed().equals(""))
+    		Assert.fail(myFirstStepsObj.seatAvailableMessageIsDisplayed()); 
+    	
+    	
     }
     
     //If there are no seats, display “Sorry, there are no more seats available.”
@@ -39,7 +52,8 @@ public class YourFirstTest extends BaseCase {
     	driver.get(Constants.DEFAULT_URL);
     	myFirstStepsObj.verifyDropDownValuesEntered("July", "July");
     	myFirstStepsObj.clickonSearch();
-    	myFirstStepsObj.seatNotAvailableMessageIsDisplayed();
+    	if(!myFirstStepsObj.seatNotAvailableMessageIsDisplayed().equals(""))
+    		Assert.fail(myFirstStepsObj.seatNotAvailableMessageIsDisplayed());
     }
     
 

@@ -10,58 +10,64 @@ import core.Constants;
 public class YourFirstPage extends BasePageObject {
 	
 	
-	public void verifyDepartureField() {
-		// TODO Auto-generated method stub
+	public String verifyDepartureField() {
 		if(!getDriver().findElement(By.xpath(Constants.departureLabelXpath)).isDisplayed())
-			Assert.fail("Departure Label Should be displayed");
+			return"Departure Label Should be displayed";
 		
 		if(!getDriver().findElement(By.xpath(Constants.departureSelectXpath)).isDisplayed())
-			Assert.fail("Departure DropDown Should be displayed");
+			return"Departure DropDown Should be displayed";
+		
+		return "";
 	}
 
-	public void verifyReturnField() {
-		// TODO Auto-generated method stub
+	public String verifyReturnField() {
 		if(!getDriver().findElement(By.xpath(Constants.returnLabelXpath)).isDisplayed())
-			Assert.fail("Departure Label Should be displayed");
+			return "Departure Label Should be displayed";
 		
 		if(!getDriver().findElement(By.xpath(Constants.returnSelectXpath)).isDisplayed())
-			Assert.fail("Departure DropDown Should be displayed");
+			return"Departure DropDown Should be displayed";
+		
+		return "";
 	}
 
-	public void verifyUserEntersDropDownDetails(String departureValue, String returnValue) {
-		// TODO Auto-generated method stub
-		waitFor(Constants.departureSelectXpath);
-		Select select = new Select(getDriver().findElement(By.xpath(Constants.departureSelectXpath)));
-		select.selectByVisibleText(departureValue);
-		select = new Select(getDriver().findElement(By.xpath(Constants.returnSelectXpath)));
-		select.selectByVisibleText(returnValue);
-	}
+
 	
 	public void clickSearchButton() {
-		moveTo(By.xpath(Constants.searchButtonXpath)).click();
+		actionClick(Constants.searchButtonXpath);
 	}
 	
-	public void seatAvailableMessageIsDisplayed() {
+	public String seatAvailableMessageIsDisplayed() {
 		waitFor(Constants.searchResultLabelXpath);
 		if(!getDriver().findElement(By.xpath(Constants.seatAvailableLabelXpath)).isDisplayed())
-			Assert.fail("'Seat Available' Should be displayed");
+			return "'Seat Available' Should be displayed";
 		
 		if(!getDriver().findElement(By.xpath(Constants.searchResultLabelXpath)).isDisplayed())
-			Assert.fail("Search Result Should be displayed");
+			return"Search Result Should be displayed";
 		
 		if(!getDriver().findElement(By.xpath(Constants.callMessageLabelXpath)).isDisplayed())
-			Assert.fail("Call Message Should be displayed");
+			return"Call Message Should be displayed";
 		
-		
+		return "";
 	}
 
-	public void seatNotAvailableMessageIsDisplayed() {
-		// TODO Auto-generated method stub
+	public String seatNotAvailableMessageIsDisplayed() {
 		String expectedSeatUnAvailableMessage = "Sorry, there are no more seats available.";
 		waitABit(10);
 		if(!getDriver().findElement(By.xpath(Constants.actualSeatUnAvailableMessageXpath)).getText().equals(expectedSeatUnAvailableMessage))
-			Assert.fail("'Sorry, there are no more seats available.' should be displayed");
+			return "'Sorry, there are no more seats available.' should be displayed";
+		
+		return "";
 			
+	}
+
+	public void verifyUserEntersDepartureDropDownDetails(String departureValue) {
+		dropDownSelect(Constants.departureSelectXpath, departureValue);
+		
+	}
+
+	public void verifyUserEntersReturnDropDownDetails(String returnValue) {
+		dropDownSelect(Constants.departureSelectXpath, returnValue);
+		
 	}
 
 

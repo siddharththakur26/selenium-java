@@ -15,40 +15,36 @@ public class MyFirstSteps extends ScenarioSteps {
 	
 	
 	@Step("User views the Departure DropDown")
-	public void verifyDepartureField() {
-		// TODO Auto-generated method stub
-		yfp.verifyDepartureField();
+	public String verifyDepartureField() {
+		return yfp.verifyDepartureField();
 		
 	}
 
 	@Step("Users View the Return Field")
-	public void verifyReturnField() {
-		// TODO Auto-generated method stub
-		yfp.verifyReturnField();
+	public String verifyReturnField() {
+		return yfp.verifyReturnField();
 	}
 
 	
 	@Step("Users Selects the Values of Departure and Return Field")
 	public void verifyDropDownValuesEntered(String departureValue, String returnValue) {
-		// TODO Auto-generated method stub
-		yfp.verifyUserEntersDropDownDetails(departureValue,returnValue);
+		yfp.verifyUserEntersDepartureDropDownDetails(departureValue);
+		yfp.verifyUserEntersReturnDropDownDetails(returnValue);
 	}
 	
 	@Step("User Clicks on Search Button")
 	public void clickonSearch() {
-		// TODO Auto-generated method stub
 		yfp.clickSearchButton();
 		
 	}
 	
 	@Step("User Views the Valid Message when seats are available")
-	public void seatAvailableMessageIsDisplayed() {
-		yfp.seatAvailableMessageIsDisplayed();
+	public String seatAvailableMessageIsDisplayed() {
+		return yfp.seatAvailableMessageIsDisplayed();
 	}
 
-	public void seatNotAvailableMessageIsDisplayed() {
-		// TODO Auto-generated method stub
-		yfp.seatNotAvailableMessageIsDisplayed();
+	public String seatNotAvailableMessageIsDisplayed() {
+		return yfp.seatNotAvailableMessageIsDisplayed();
 	}
 
 	public void verifyProminentMessageIsDisplayed() {
